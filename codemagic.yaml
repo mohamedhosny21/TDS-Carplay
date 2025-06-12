@@ -1,0 +1,53 @@
+workflows:
+  build-ipa-only:
+    name: Build iOS IPA Only
+    environment:
+      xcode: latest
+      vars:
+        XCODE_SCHEME: "TDS-Carplay"              # ✅ Your scheme name in Xcode
+        XCODE_PROJECT: "TDS-Carplay.xcodeproj"   # ✅ Use .xcworkspace if CocoaPods
+        BUNDLE_ID: "com.nft.colony"              # ✅ Your app's Bundle ID
+    triggering:
+      events:
+        - push
+    scripts:
+      - name: Build and archive the app
+        script: |
+          xcodebuild clean
+
+          xcodebuild archive \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -archivePath "$HOME/build/$XCODE_SCHEME.xcarchive" \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGN_STYLE=Automatic \
+            DEVELOPMENT_TEAM=$(xcode-project detect-signing --bundle-id $BUNDLE_ID --list | grep TeamIdentifier | awk '{print $2}') \
+            PROVISIONING_PROFILE_SPECIFIER=""
+
+      - name: Export IPA
+        script: |
+          cat <<EOF > exportOptions.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>ad-hoc</string> <!-- or development / enterprise -->
+            <key>signingStyle</key>
+            <string>automatic</string>
+            <key>stripSwiftSymbols</key>
+            <true/>
+            <key>compileBitcode</key>
+            <false/>
+          </dict>
+          </plist>
+          EOF
+
+          xcodebuild -exportArchive \
+            -archivePath "$HOME/build/$XCODE_SCHEME.xcarchive" \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath "$HOME/export"
+
+    artifacts:
+      - export/*.ipa
