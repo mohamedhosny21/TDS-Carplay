@@ -6,19 +6,26 @@ workflows:
       ios_signing:
         distribution_type: ad_hoc
         provisioning_profiles:
-          - bundle_identifier: "com.nft.colony"
+          - target: "TDS-Car"
+            bundle_identifier: "com.nft.colony"
             profile_name: "TDS-Car"
-          - bundle_identifier: "com.nft.colony.UploadVideo"
+          - target: "UploadVideo"
+            bundle_identifier: "com.nft.colony.UploadVideo"
             profile_name: "UploadVideo"
-          - bundle_identifier: "com.nft.colony.Video3"
+          - target: "Video3"
+            bundle_identifier: "com.nft.colony.Video3"
             profile_name: "Video3"
-          - bundle_identifier: "com.nft.colony.ScreenRec"
+          - target: "ScreenRec"
+            bundle_identifier: "com.nft.colony.ScreenRec"
             profile_name: "ScreenRec"
-          - bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
+          - target: "ScreenRecSetupUI"
+            bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
             profile_name: "ScreenRecSetupUI"
-          - bundle_identifier: "com.nft.colony.Carplayintent"
+          - target: "CarPlayIntent"
+            bundle_identifier: "com.nft.colony.Carplayintent"
             profile_name: "CarPlayIntent"
-          - bundle_identifier: "com.nft.colony.CarplayintentUI"
+          - target: "CarplayintentUI"
+            bundle_identifier: "com.nft.colony.CarplayintentUI"
             profile_name: "CarplayintentUI"
 
     triggering:
