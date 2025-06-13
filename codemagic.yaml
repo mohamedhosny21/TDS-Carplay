@@ -4,7 +4,6 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        certificates: "TDS-car"  # Corrected certificate format
         provisioning_profiles:
           - "com.nft.colony.Video3:Video3"
           - "com.nft.colony.UploadVideo:UploadVideo"
@@ -12,6 +11,8 @@ workflows:
           - "com.nft.colony.ScreenRecSetupUI:ScreenRecSetupUI"
           - "com.nft.colony.Carplayintent:CarPlayIntent"
           - "com.nft.colony.CarplayintentUI:CarplayintentUI"
+        certificates:
+          - "TDS-car"
 
     triggering:
       events:
