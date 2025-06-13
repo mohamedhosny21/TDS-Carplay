@@ -11,7 +11,7 @@ workflows:
         script: |
           xcode-project use-profiles
           xcode-project build-ipa \
-            --workspace "TDS Video.xcworkspace" \
+            --workspace "TDS Video.xcodeproj" \
             --export-config ExportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
