@@ -4,20 +4,24 @@ workflows:
     environment:
       xcode: latest
       vars:
-        XCODE_SCHEME: "TDS Video"
         XCODE_PROJECT: "TDS Video.xcodeproj"
+        XCODE_SCHEME: "TDS Video"
     triggering:
       events:
         - push
     scripts:
+      - name: Prepare code signing
+        script: |
+          xcode-project use-profiles \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+
       - name: Build and export IPA
         script: |
-          # Build the app and export as IPA (ad-hoc by default)
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME" \
-            --archive-flags="-destination 'generic/platform=iOS'" \
-            --export-method ad-hoc
+            --scheme "$XCODE_SCHEME"
+
     artifacts:
       - build/ios/ipa/*.ipa
 
@@ -33,4 +37,4 @@ code_signing:
         d4eh2gMpNNOfzZYo0+QgB+gT4KmA0EcHflfO3KH09w4l1wp6+B1W8JSQWhSN8uv/
         5Qb/hjTI
         -----END PRIVATE KEY-----
-    team_id: C3Z5URCHGS
+    team_id: "C3Z5URCHGS"
