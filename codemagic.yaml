@@ -7,16 +7,17 @@ workflows:
       events:
         - push
     scripts:
-      - name: Set Team ID and Signing
+      - name: Update Team ID in Project
         script: |
-          # Set development team for all targets in project
-          xcode-project development-team --team K3S7UENN8E "TDS Video.xcodeproj"
+          # Replace all instances of old team ID with yours
+          sed -i '' 's/K3S7UENN8E/C3Z5URCHGS/g' "TDS Video.xcodeproj/project.pbxproj"
           
-          # Enable automatic signing management
+          # Verify changes
+          grep -C 1 'C3Z5URCHGS' "TDS Video.xcodeproj/project.pbxproj"
+
+      - name: Configure Automatic Signing
+        script: |
           xcode-project use-profiles
-          
-          # Verify settings
-          xcode-project show-signing-settings "TDS Video.xcodeproj"
 
       - name: Generate ExportOptions.plist
         script: |
@@ -33,29 +34,25 @@ workflows:
             <true/>
             <key>compileBitcode</key>
             <false/>
-            <!-- Add team ID for consistency -->
             <key>teamID</key>
             <string>C3Z5URCHGS</string>
           </dict>
-          </EOF
-          
-          # Verify plist creation
-          cat ExportOptions.plist
+          </plist>
+          EOF
 
-      - name: Build and export IPA
+      - name: Build and Export IPA
         script: |
           xcode-project build-ipa \
             --project "TDS Video.xcodeproj" \
             --scheme "TDS Video" \
-            --export-options-plist ExportOptions.plist \
-            --team-id C3Z5URCHGS  # Explicitly pass team ID
+            --export-options-plist ExportOptions.plist
 
     artifacts:
       - build/ios/ipa/*.ipa
 
 code_signing:
   automatic_code_signing:
-    team_id: C3Z5URCHGS  # Primary team ID for provisioning
+    team_id: C3Z5URCHGS  # MUST match your Apple Developer account
     app_store_connect_credential:
       key_id: "23ZMF48P8Z"
       issuer_id: "fcb8faeb-1e16-4bcd-9083-9186811c0262"
