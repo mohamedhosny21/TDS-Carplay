@@ -5,7 +5,7 @@ workflows:
       xcode: latest
       ios_signing:
         certificates:
-          - ref: TDS-car
+          - TDS-car
         provisioning_profiles:
           com.nft.colony: TDS-Car
           com.nft.colony.UploadVideo: UploadVideo
