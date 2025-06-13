@@ -4,7 +4,6 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        target: "TDS Video" 
         bundle_id: "com.nft.colony"  # Primary bundle ID
         profile_name: "TDS-Car"  # Primary provisioning profile
           # Additional provisioning profiles for extensions
