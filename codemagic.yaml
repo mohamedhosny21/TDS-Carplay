@@ -4,6 +4,7 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
+        target: "TDS Video"  # Replace with your actual scheme name if different
         provisioning_profiles:
           - com.nft.colony: TDS-Car
           - com.nft.colony.UploadVideo: UploadVideo
