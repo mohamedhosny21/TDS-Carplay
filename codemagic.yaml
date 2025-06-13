@@ -4,21 +4,25 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        bundle_id: "com.nft.colony"  # Primary bundle ID
-        profile_name: "TDS-Car"  # Primary provisioning profile
-          # Additional provisioning profiles for extensions
+        certificates:
+          - ref: TDS-car
         provisioning_profiles:
-          - com.nft.colony.UploadVideo: UploadVideo
-          - com.nft.colony.Video3: Video3
-          - com.nft.colony.ScreenRec: ScreenRec
-          - com.nft.colony.ScreenRecSetupUI: ScreenRecSetupUI
-          - com.nft.colony.Carplayintent: CarPlayIntent
-          - com.nft.colony.CarplayintentUI: CarplayintentUI
+          com.nft.colony: TDS-Car
+          com.nft.colony.UploadVideo: UploadVideo
+          com.nft.colony.Video3: Video3
+          com.nft.colony.ScreenRec: ScreenRec
+          com.nft.colony.ScreenRecSetupUI: ScreenRecSetupUI
+          com.nft.colony.Carplayintent: CarPlayIntent
+          com.nft.colony.CarplayintentUI: CarplayintentUI
+
     triggering:
       events:
         - push
 
     scripts:
+      - name: Use provisioning profiles
+        script: xcode-project use-profiles
+
       - name: Configure App Store Connect API Key
         script: |
           mkdir -p ~/private_keys
@@ -35,50 +39,6 @@ workflows:
           export API_KEY_ID=23ZMF48P8Z
           export API_KEY_ISSUER_ID=fcb8faeb-1e16-4bcd-9083-9186811c0262
 
-      - name: Update Team ID and Signing Settings
-        script: |
-          sed -i '' 's/DEVELOPMENT_TEAM = .*;/DEVELOPMENT_TEAM = C3Z5URCHGS;/g' "TDS Video.xcodeproj/project.pbxproj"
-          sed -i '' 's/CODE_SIGN_STYLE = .*;/CODE_SIGN_STYLE = Manual;/g' "TDS Video.xcodeproj/project.pbxproj"
-          sed -i '' '/PROVISIONING_PROFILE_SPECIFIER/d' "TDS Video.xcodeproj/project.pbxproj"
-          sed -i '' '/PROVISIONING_PROFILE = .*;/d' "TDS Video.xcodeproj/project.pbxproj"
-          sed -i '' 's/SWIFT_OPTIMIZATION_LEVEL = .*;/SWIFT_OPTIMIZATION_LEVEL = "-Onone";/g' "TDS Video.xcodeproj/project.pbxproj"
-          echo "✅ Code signing settings updated."
-          grep -E "DEVELOPMENT_TEAM|CODE_SIGN_STYLE|SWIFT_OPTIMIZATION_LEVEL" "TDS Video.xcodeproj/project.pbxproj"
-
-      - name: Generate ExportOptions.plist
-        script: |
-          cat <<EOF > ExportOptions.plist
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key>
-            <string>ad-hoc</string>
-            <key>signingStyle</key>
-            <string>manual</string>
-            <key>teamID</key>
-            <string>C3Z5URCHGS</string>
-            <key>provisioningProfiles</key>
-            <dict>
-              <key>com.nft.colony</key>
-              <string>TDS-Car</string>
-              <key>com.nft.colony.UploadVideo</key>
-              <string>UploadVideo</string>
-              <key>com.nft.colony.Video3</key>
-              <string>Video3</string>
-              <key>com.nft.colony.ScreenRec</key>
-              <string>ScreenRec</string>
-              <key>com.nft.colony.ScreenRecSetupUI</key>
-              <string>ScreenRecSetupUI</string>
-              <key>com.nft.colony.Carplayintent</key>
-              <string>CarPlayIntent</string>
-              <key>com.nft.colony.CarplayintentUI</key>
-              <string>CarplayintentUI</string>
-            </dict>
-          </dict>
-          </plist>
-          EOF
-
       - name: Build and Export IPA
         script: |
           set -exo pipefail
@@ -88,16 +48,12 @@ workflows:
             -scheme "TDS Video" \
             -archivePath build/ios/TDS_Video.xcarchive \
             -destination 'generic/platform=iOS' \
-            DEVELOPMENT_TEAM=C3Z5URCHGS \
-            CODE_SIGN_STYLE=Manual \
             -allowProvisioningUpdates
           xcodebuild -exportArchive \
             -archivePath build/ios/TDS_Video.xcarchive \
             -exportPath build/ios/ipa \
             -exportOptionsPlist ExportOptions.plist \
             -allowProvisioningUpdates
-          echo "Build artifacts:"
-          ls -lR build/ios/ipa
 
     artifacts:
       - build/ios/ipa/*.ipa
