@@ -12,7 +12,7 @@ workflows:
           - "com.nft.colony.Carplayintent:CarPlayIntent"
           - "com.nft.colony.CarplayintentUI:CarplayintentUI"
         certificates:
-           production: "TDS-car"
+          - "production": "TDS-car"
 
     triggering:
       events:
