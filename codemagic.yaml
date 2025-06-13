@@ -10,7 +10,7 @@ workflows:
       - name: Set Team ID and Signing
         script: |
           # Set development team for all targets in project
-          xcode-project development-team --team C3Z5URCHGS "TDS Video.xcodeproj"
+          xcode-project development-team --team K3S7UENN8E "TDS Video.xcodeproj"
           
           # Enable automatic signing management
           xcode-project use-profiles
