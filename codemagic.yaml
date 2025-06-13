@@ -5,31 +5,27 @@ workflows:
       xcode: latest
       ios_signing:
         - distribution_type: ad_hoc
-          certificate_name: "iOS Distribution"
-          provisioning_profile_name: "TDS-Car"
-          bundle_identifier: "com.nft.colony"
-        - distribution_type: ad_hoc
-          certificate_name: "iOS Distribution"
+          certificate_name: "TDS-car"
           provisioning_profile_name: "UploadVideo"
           bundle_identifier: "com.nft.colony.UploadVideo"
         - distribution_type: ad_hoc
-          certificate_name: "iOS Distribution"
+          certificate_name: "TDS-car"
           provisioning_profile_name: "Video3"
           bundle_identifier: "com.nft.colony.Video3"
         - distribution_type: ad_hoc
-          certificate_name: "iOS Distribution"
+          certificate_name: "TDS-car"
           provisioning_profile_name: "ScreenRec"
           bundle_identifier: "com.nft.colony.ScreenRec"
         - distribution_type: ad_hoc
-          certificate_name: "iOS Distribution"
+          certificate_name: "TDS-car"
           provisioning_profile_name: "ScreenRecSetupUI"
           bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
         - distribution_type: ad_hoc
-          certificate_name: "iOS Distribution"
+          certificate_name: "TDS-car"
           provisioning_profile_name: "CarPlayIntent"
           bundle_identifier: "com.nft.colony.Carplayintent"
         - distribution_type: ad_hoc
-          certificate_name: "iOS Distribution"
+          certificate_name: "TDS-car"
           provisioning_profile_name: "CarplayintentUI"
           bundle_identifier: "com.nft.colony.CarplayintentUI"
 
@@ -69,8 +65,6 @@ workflows:
             <string>C3Z5URCHGS</string>
             <key>provisioningProfiles</key>
             <dict>
-              <key>com.nft.colony</key>
-              <string>TDS-Car</string>
               <key>com.nft.colony.UploadVideo</key>
               <string>UploadVideo</string>
               <key>com.nft.colony.Video3</key>
