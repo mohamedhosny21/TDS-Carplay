@@ -3,6 +3,31 @@ workflows:
     name: Build iOS IPA Only
     environment:
       xcode: latest
+      ios_signing:
+        - target: "TDS Video"
+          bundle_id: "com.nft.colony.Video3"
+          profile_name: "Video3"
+          certificate: "TDS-car"
+        - target: "UploadVideo"
+          bundle_id: "com.nft.colony.UploadVideo"
+          profile_name: "UploadVideo"
+          certificate: "TDS-car"
+        - target: "ScreenRec"
+          bundle_id: "com.nft.colony.ScreenRec"
+          profile_name: "ScreenRec"
+          certificate: "TDS-car"
+        - target: "ScreenRecSetupUI"
+          bundle_id: "com.nft.colony.ScreenRecSetupUI"
+          profile_name: "ScreenRecSetupUI"
+          certificate: "TDS-car"
+        - target: "Carplayintent"
+          bundle_id: "com.nft.colony.Carplayintent"
+          profile_name: "CarPlayIntent"
+          certificate: "TDS-car"
+        - target: "CarplayintentUI"
+          bundle_id: "com.nft.colony.CarplayintentUI"
+          profile_name: "CarplayintentUI"
+          certificate: "TDS-car"
 
     triggering:
       events:
@@ -40,10 +65,10 @@ workflows:
             <string>C3Z5URCHGS</string>
             <key>provisioningProfiles</key>
             <dict>
-              <key>com.nft.colony.UploadVideo</key>
-              <string>UploadVideo</string>
               <key>com.nft.colony.Video3</key>
               <string>Video3</string>
+              <key>com.nft.colony.UploadVideo</key>
+              <string>UploadVideo</string>
               <key>com.nft.colony.ScreenRec</key>
               <string>ScreenRec</string>
               <key>com.nft.colony.ScreenRecSetupUI</key>
