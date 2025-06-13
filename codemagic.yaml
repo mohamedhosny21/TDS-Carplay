@@ -4,8 +4,6 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        distribution_type: ad-hoc  # Required field
-        bundle_identifier: "com.nft.colony"  # Primary bundle ID
         provisioning_profiles:
           - "com.nft.colony": "TDS-Car"
           - "com.nft.colony.UploadVideo": "UploadVideo"
@@ -15,7 +13,7 @@ workflows:
           - "com.nft.colony.Carplayintent": "CarPlayIntent"
           - "com.nft.colony.CarplayintentUI": "CarplayintentUI"
         certificates:
-          - production: "TDS-car"  # Certificate reference
+          - production: "TDS-car"  # Changed from 'development' to 'production'
 
     triggering:
       events:
