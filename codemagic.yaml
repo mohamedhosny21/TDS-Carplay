@@ -4,9 +4,9 @@ workflows:
     environment:
       xcode: latest
       vars:
-        XCODE_SCHEME: "TDS Video"              # ✅ Your scheme name in Xcode
-        XCODE_PROJECT: "TDS Video.xcodeproj"   # ✅ Use .xcworkspace if CocoaPods
-        BUNDLE_ID: "com.nft.colony"              # ✅ Your app's Bundle ID
+        XCODE_SCHEME: "TDS Video"
+        XCODE_PROJECT: "TDS Video.xcodeproj"
+        BUNDLE_ID: "com.nft.colony"
     triggering:
       events:
         - push
@@ -22,7 +22,7 @@ workflows:
             -archivePath "$HOME/build/$XCODE_SCHEME.xcarchive" \
             -destination 'generic/platform=iOS' \
             CODE_SIGN_STYLE=Automatic \
-            DEVELOPMENT_TEAM=$(xcode-project detect-signing --bundle-id $BUNDLE_ID --list | grep TeamIdentifier | awk '{print $2}') \
+            DEVELOPMENT_TEAM=C3Z5URCHGS \
             PROVISIONING_PROFILE_SPECIFIER=""
 
       - name: Export IPA
@@ -33,7 +33,7 @@ workflows:
           <plist version="1.0">
           <dict>
             <key>method</key>
-            <string>ad-hoc</string> <!-- or development / enterprise -->
+            <string>ad-hoc</string>
             <key>signingStyle</key>
             <string>automatic</string>
             <key>stripSwiftSymbols</key>
@@ -51,3 +51,17 @@ workflows:
 
     artifacts:
       - export/*.ipa
+
+code_signing:
+  automatic_code_signing:
+    app_store_connect_credential:
+      key_id: "23ZMF48P8Z"
+      issuer_id: "fcb8faeb-1e16-4bcd-9083-9186811c0262"
+      key: |
+        -----BEGIN PRIVATE KEY-----
+        MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgOTj62dXMg9eCpyqD
+        YRLmuE5BfodmezSB42cMxKNw0HigCgYIKoZIzj0DAQehRANCAAR4PNM2kqyjI03p
+        d4eh2gMpNNOfzZYo0+QgB+gT4KmA0EcHflfO3KH09w4l1wp6+B1W8JSQWhSN8uv/
+        5Qb/hjTI
+        -----END PRIVATE KEY-----
+    team_id: C3Z5URCHGS
