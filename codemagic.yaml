@@ -5,6 +5,7 @@ workflows:
       xcode: latest
       ios_signing:
         distribution_type: ad_hoc
+        certificate_name: "TDS-car"
         provisioning_profiles:
           - target: "TDS-Car"
             bundle_identifier: "com.nft.colony"
