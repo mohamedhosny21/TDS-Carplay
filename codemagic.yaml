@@ -3,6 +3,35 @@ workflows:
     name: Build iOS IPA Only
     environment:
       xcode: latest
+      ios_signing:
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "TDS-Car"
+          bundle_identifier: "com.nft.colony"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "UploadVideo"
+          bundle_identifier: "com.nft.colony.UploadVideo"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "Video3"
+          bundle_identifier: "com.nft.colony.Video3"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "ScreenRec"
+          bundle_identifier: "com.nft.colony.ScreenRec"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "ScreenRecSetupUI"
+          bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "CarPlayIntent"
+          bundle_identifier: "com.nft.colony.Carplayintent"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "CarplayintentUI"
+          bundle_identifier: "com.nft.colony.CarplayintentUI"
 
     triggering:
       events:
