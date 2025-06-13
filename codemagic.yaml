@@ -7,13 +7,13 @@ workflows:
         certificates:
           - TDS-car
         provisioning_profiles:
-          com.nft.colony: TDS-Car
-          com.nft.colony.UploadVideo: UploadVideo
-          com.nft.colony.Video3: Video3
-          com.nft.colony.ScreenRec: ScreenRec
-          com.nft.colony.ScreenRecSetupUI: ScreenRecSetupUI
-          com.nft.colony.Carplayintent: CarPlayIntent
-          com.nft.colony.CarplayintentUI: CarplayintentUI
+          - com.nft.colony: TDS-Car
+          - com.nft.colony.UploadVideo: UploadVideo
+          - com.nft.colony.Video3: Video3
+          - com.nft.colony.ScreenRec: ScreenRec
+          - com.nft.colony.ScreenRecSetupUI: ScreenRecSetupUI
+          - com.nft.colony.Carplayintent: CarPlayIntent
+          - com.nft.colony.CarplayintentUI: CarplayintentUI
 
     triggering:
       events:
