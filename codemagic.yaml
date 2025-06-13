@@ -6,53 +6,19 @@ workflows:
       vars:
         XCODE_SCHEME: "TDS Video"
         XCODE_PROJECT: "TDS Video.xcodeproj"
-        BUNDLE_ID: "com.nft.colony"
     triggering:
       events:
         - push
     scripts:
-      - name: Build and archive the app
+      - name: Build and export IPA
         script: |
-          xcodebuild clean
-
-          xcodebuild archive \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -configuration Release \
-            -archivePath "$HOME/build/$XCODE_SCHEME.xcarchive" \
-            -destination 'generic/platform=iOS' \
-            CODE_SIGN_STYLE=Automatic \
-            DEVELOPMENT_TEAM=C3Z5URCHGS \
-            PROVISIONING_PROFILE_SPECIFIER="" \
-            -allowProvisioningUpdates
-
-
-      - name: Export IPA
-        script: |
-          cat <<EOF > exportOptions.plist
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key>
-            <string>ad-hoc</string>
-            <key>signingStyle</key>
-            <string>automatic</string>
-            <key>stripSwiftSymbols</key>
-            <true/>
-            <key>compileBitcode</key>
-            <false/>
-          </dict>
-          </plist>
-          EOF
-
-          xcodebuild -exportArchive \
-            -archivePath "$HOME/build/$XCODE_SCHEME.xcarchive" \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath "$HOME/export"
-
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME" \
+            --team-id C3Z5URCHGS \
+            --use-xcpretty
     artifacts:
-      - export/*.ipa
+      - build/ios/ipa/*.ipa
 
 code_signing:
   automatic_code_signing:
