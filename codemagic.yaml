@@ -44,7 +44,7 @@ workflows:
           fi
           
           # Verify application groups match
-          if ! grep -q "group.com.nft.colony.video" "UploadVideo/UploadVideo.entitlements"; then
+          if ! grep -q "group.com.nft.colony.UploadVideo" "UploadVideo/UploadVideo.entitlements"; then
             echo "ERROR: UploadVideo entitlements mismatch"
             exit 1
           fi
