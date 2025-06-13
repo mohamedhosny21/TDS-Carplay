@@ -4,25 +4,24 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        - target: "TDS Video"                # Must match your Xcode scheme name
-          bundle_id: "com.nft.colony"        # Primary app bundle ID
-          certificate: "TDS-car"             # Certificate reference (must match CodeMagic)
-          profile_name: "TDS-Car"            # Primary provisioning profile
-          provisioning_profiles:             # Dictionary format for extension profiles
-            "com.nft.colony.UploadVideo": "UploadVideo"
-            "com.nft.colony.Video3": "Video3"
-            "com.nft.colony.ScreenRec": "ScreenRec"
-            "com.nft.colony.ScreenRecSetupUI": "ScreenRecSetupUI"
-            "com.nft.colony.Carplayintent": "CarPlayIntent"
-            "com.nft.colony.CarplayintentUI": "CarplayintentUI"
+        configs:
+          - target: "TDS Video"
+            bundle_id: "com.nft.colony"
+            certificate: "TDS-car"
+            profile_name: "TDS-Car"
+            provisioning_profiles:
+              "com.nft.colony.UploadVideo": "UploadVideo"
+              "com.nft.colony.Video3": "Video3"
+              "com.nft.colony.ScreenRec": "ScreenRec"
+              "com.nft.colony.ScreenRecSetupUI": "ScreenRecSetupUI"
+              "com.nft.colony.Carplayintent": "CarPlayIntent"
+              "com.nft.colony.CarplayintentUI": "CarplayintentUI"
 
     triggering:
       events:
         - push
 
     scripts:
-      # REMOVED: "Use provisioning profiles" script (not needed with proper ios_signing config)
-      
       - name: Configure App Store Connect API Key
         script: |
           mkdir -p ~/private_keys
