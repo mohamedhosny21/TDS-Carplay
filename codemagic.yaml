@@ -7,17 +7,18 @@ workflows:
       events:
         - push
     scripts:
-      - name: Update Team ID in Project
+      - name: Update Team ID and Signing Settings
         script: |
-          # Replace all instances of old team ID with yours
-          sed -i '' 's/K3S7UENN8E/C3Z5URCHGS/g' "TDS Video.xcodeproj/project.pbxproj"
+          # Update all team IDs in project file
+          sed -i '' 's/DEVELOPMENT_TEAM = K3S7UENN8E;/DEVELOPMENT_TEAM = C3Z5URCHGS;/g' "TDS Video.xcodeproj/project.pbxproj"
+          sed -i '' 's/PRODUCT_BUNDLE_IDENTIFIER = net.thomasdye./PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany./g' "TDS Video.xcodeproj/project.pbxproj"
+          
+          # Force automatic signing for all targets
+          sed -i '' 's/CODE_SIGN_STYLE = .*;/CODE_SIGN_STYLE = Automatic;/g' "TDS Video.xcodeproj/project.pbxproj"
           
           # Verify changes
-          grep -C 1 'C3Z5URCHGS' "TDS Video.xcodeproj/project.pbxproj"
-
-      - name: Configure Automatic Signing
-        script: |
-          xcode-project use-profiles
+          echo "Updated settings:"
+          grep -E "DEVELOPMENT_TEAM|PRODUCT_BUNDLE_IDENTIFIER|CODE_SIGN_STYLE" "TDS Video.xcodeproj/project.pbxproj"
 
       - name: Generate ExportOptions.plist
         script: |
@@ -39,20 +40,44 @@ workflows:
           </dict>
           </plist>
           EOF
+          
+          echo "ExportOptions.plist contents:"
+          cat ExportOptions.plist
 
       - name: Build and Export IPA
         script: |
-          xcode-project build-ipa \
-            --project "TDS Video.xcodeproj" \
-            --scheme "TDS Video" \
-            --export-options-plist ExportOptions.plist
+          set -exo pipefail
+          
+          # Clean build directory
+          rm -rf build
+          
+          # Build and archive
+          xcodebuild archive \
+            -project "TDS Video.xcodeproj" \
+            -scheme "TDS Video" \
+            -archivePath build/ios/TDS_Video.xcarchive \
+            -destination 'generic/platform=iOS' \
+            DEVELOPMENT_TEAM=C3Z5URCHGS \
+            CODE_SIGN_STYLE=Automatic \
+            PROVISIONING_PROFILE_SPECIFIER="" \
+            CODE_SIGN_IDENTITY="Apple Development"
+          
+          # Export IPA
+          xcodebuild -exportArchive \
+            -archivePath build/ios/TDS_Video.xcarchive \
+            -exportPath build/ios/ipa \
+            -exportOptionsPlist ExportOptions.plist \
+            -allowProvisioningUpdates
+
+          echo "Build artifacts:"
+          ls -lR build/ios/ipa
 
     artifacts:
       - build/ios/ipa/*.ipa
 
 code_signing:
   automatic_code_signing:
-    team_id: C3Z5URCHGS  # MUST match your Apple Developer account
+    team_id: C3Z5URCHGS
     app_store_connect_credential:
       key_id: "23ZMF48P8Z"
       issuer_id: "fcb8faeb-1e16-4bcd-9083-9186811c0262"
