@@ -7,12 +7,15 @@ workflows:
       events:
         - push
     scripts:
-      - name: Build and export IPA
+      - name: Use signing profiles
         script: |
           xcode-project use-profiles
+      - name: Build and export IPA
+        script: |
           xcode-project build-ipa \
-            --workspace "TDS Video.xcodeproj" \
-            --export-config ExportOptions.plist
+            --project "TDS Video.xcodeproj" \
+            --scheme "TDS Video" \
+            --export-options-plist ExportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
 
