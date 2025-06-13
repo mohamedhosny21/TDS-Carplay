@@ -6,6 +6,7 @@ workflows:
       ios_signing:
         certificates:
           - TDS-car
+        profile_name: TDS-Car  
         provisioning_profiles:
           - com.nft.colony: TDS-Car
           - com.nft.colony.UploadVideo: UploadVideo
