@@ -23,7 +23,9 @@ workflows:
             -destination 'generic/platform=iOS' \
             CODE_SIGN_STYLE=Automatic \
             DEVELOPMENT_TEAM=C3Z5URCHGS \
-            PROVISIONING_PROFILE_SPECIFIER=""
+            PROVISIONING_PROFILE_SPECIFIER="" \
+            -allowProvisioningUpdates
+
 
       - name: Export IPA
         script: |
