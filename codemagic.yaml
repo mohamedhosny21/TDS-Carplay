@@ -53,7 +53,7 @@ workflows:
           <plist version="1.0">
           <dict>
             <key>method</key>
-            <string>ad-hoc</string>
+            <string>app-store</string>
             <key>signingStyle</key>
             <string>automatic</string>
             <key>stripSwiftSymbols</key>
@@ -84,11 +84,9 @@ workflows:
             -destination 'generic/platform=iOS' \
             DEVELOPMENT_TEAM=C3Z5URCHGS \
             CODE_SIGN_STYLE=Automatic \
-            CODE_SIGN_IDENTITY="Apple Development" \
-            SWIFT_OPTIMIZATION_LEVEL="-Onone" \
             -allowProvisioningUpdates
           
-          # Export IPA
+          # Export IPA for App Store
           xcodebuild -exportArchive \
             -archivePath build/ios/TDS_Video.xcarchive \
             -exportPath build/ios/ipa \
