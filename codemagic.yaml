@@ -7,18 +7,20 @@ workflows:
       events:
         - push
     scripts:
-      - name: Update Team ID and Signing Settings
+      - name: Configure Project Settings
         script: |
-          # Update all team IDs in project file
-          sed -i '' 's/DEVELOPMENT_TEAM = K3S7UENN8E;/DEVELOPMENT_TEAM = C3Z5URCHGS;/g' "TDS Video.xcodeproj/project.pbxproj"
-          sed -i '' 's/PRODUCT_BUNDLE_IDENTIFIER = net.thomasdye./PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany./g' "TDS Video.xcodeproj/project.pbxproj"
+          # Update team ID in project file
+          sed -i '' 's/K3S7UENN8E/C3Z5URCHGS/g' "TDS Video.xcodeproj/project.pbxproj"
           
           # Force automatic signing for all targets
           sed -i '' 's/CODE_SIGN_STYLE = .*;/CODE_SIGN_STYLE = Automatic;/g' "TDS Video.xcodeproj/project.pbxproj"
           
+          # Set Swift optimization level for debugging
+          sed -i '' 's/SWIFT_OPTIMIZATION_LEVEL = .*;/SWIFT_OPTIMIZATION_LEVEL = "-Onone";/g' "TDS Video.xcodeproj/project.pbxproj"
+          
           # Verify changes
-          echo "Updated settings:"
-          grep -E "DEVELOPMENT_TEAM|PRODUCT_BUNDLE_IDENTIFIER|CODE_SIGN_STYLE" "TDS Video.xcodeproj/project.pbxproj"
+          echo "Updated project settings:"
+          grep -E "DEVELOPMENT_TEAM|CODE_SIGN_STYLE|SWIFT_OPTIMIZATION_LEVEL" "TDS Video.xcodeproj/project.pbxproj"
 
       - name: Generate ExportOptions.plist
         script: |
@@ -37,6 +39,11 @@ workflows:
             <false/>
             <key>teamID</key>
             <string>C3Z5URCHGS</string>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>net.thomasdye.TDS-Video3</key>
+              <string>iOS Team Ad Hoc Provisioning Profile: *</string>
+            </dict>
           </dict>
           </plist>
           EOF
@@ -51,7 +58,7 @@ workflows:
           # Clean build directory
           rm -rf build
           
-          # Build and archive
+          # Build and archive with provisioning updates
           xcodebuild archive \
             -project "TDS Video.xcodeproj" \
             -scheme "TDS Video" \
@@ -60,7 +67,9 @@ workflows:
             DEVELOPMENT_TEAM=C3Z5URCHGS \
             CODE_SIGN_STYLE=Automatic \
             PROVISIONING_PROFILE_SPECIFIER="" \
-            CODE_SIGN_IDENTITY="Apple Development"
+            CODE_SIGN_IDENTITY="Apple Development" \
+            SWIFT_OPTIMIZATION_LEVEL="-Onone" \
+            -allowProvisioningUpdates
           
           # Export IPA
           xcodebuild -exportArchive \
