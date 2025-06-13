@@ -8,25 +8,18 @@ workflows:
         provisioning_profiles:
           - target: "TDS-Car"
             bundle_identifier: "com.nft.colony"
-            profile_name: "TDS-Car"
           - target: "UploadVideo"
             bundle_identifier: "com.nft.colony.UploadVideo"
-            profile_name: "UploadVideo"
           - target: "Video3"
             bundle_identifier: "com.nft.colony.Video3"
-            profile_name: "Video3"
           - target: "ScreenRec"
             bundle_identifier: "com.nft.colony.ScreenRec"
-            profile_name: "ScreenRec"
           - target: "ScreenRecSetupUI"
             bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
-            profile_name: "ScreenRecSetupUI"
           - target: "CarPlayIntent"
             bundle_identifier: "com.nft.colony.Carplayintent"
-            profile_name: "CarPlayIntent"
           - target: "CarplayintentUI"
             bundle_identifier: "com.nft.colony.CarplayintentUI"
-            profile_name: "CarplayintentUI"
 
     triggering:
       events:
