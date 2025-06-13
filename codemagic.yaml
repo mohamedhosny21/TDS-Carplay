@@ -26,7 +26,7 @@ workflows:
       - name: Update Team ID and Signing Settings
         script: |
           sed -i '' 's/DEVELOPMENT_TEAM = .*;/DEVELOPMENT_TEAM = C3Z5URCHGS;/g' "TDS Video.xcodeproj/project.pbxproj"
-          sed -i '' 's/CODE_SIGN_STYLE = .*;/CODE_SIGN_STYLE = Automatic;/g' "TDS Video.xcodeproj/project.pbxproj"
+          sed -i '' 's/CODE_SIGN_STYLE = .*;/CODE_SIGN_STYLE = Manual;/g' "TDS Video.xcodeproj/project.pbxproj"
           sed -i '' '/PROVISIONING_PROFILE_SPECIFIER/d' "TDS Video.xcodeproj/project.pbxproj"
           sed -i '' '/PROVISIONING_PROFILE = .*;/d' "TDS Video.xcodeproj/project.pbxproj"
           sed -i '' 's/SWIFT_OPTIMIZATION_LEVEL = .*;/SWIFT_OPTIMIZATION_LEVEL = "-Onone";/g' "TDS Video.xcodeproj/project.pbxproj"
@@ -43,7 +43,7 @@ workflows:
             <key>method</key>
             <string>ad-hoc</string>
             <key>signingStyle</key>
-            <string>automatic</string>
+            <string>manual</string>
             <key>stripSwiftSymbols</key>
             <true/>
             <key>compileBitcode</key>
@@ -64,8 +64,7 @@ workflows:
             -archivePath build/ios/TDS_Video.xcarchive \
             -destination 'generic/platform=iOS' \
             DEVELOPMENT_TEAM=C3Z5URCHGS \
-            CODE_SIGN_STYLE=Automatic \
-            CODE_SIGN_IDENTITY="Apple Development" \
+            CODE_SIGN_STYLE=Manual \
             -allowProvisioningUpdates
           xcodebuild -exportArchive \
             -archivePath build/ios/TDS_Video.xcarchive \
