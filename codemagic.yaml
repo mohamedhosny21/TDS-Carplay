@@ -4,8 +4,8 @@ workflows:
     environment:
       xcode: latest
       vars:
-        XCODE_SCHEME: "net.thomasdye.TDS-Video3.UploadVideo"              # ✅ Your scheme name in Xcode
-        XCODE_PROJECT: "TDS-Carplay.xcodeproj"   # ✅ Use .xcworkspace if CocoaPods
+        XCODE_SCHEME: "TDS Video"              # ✅ Your scheme name in Xcode
+        XCODE_PROJECT: "TDS-Carplay/TDS Video.xcodeproj"   # ✅ Use .xcworkspace if CocoaPods
         BUNDLE_ID: "com.nft.colony"              # ✅ Your app's Bundle ID
     triggering:
       events:
