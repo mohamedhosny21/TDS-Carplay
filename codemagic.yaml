@@ -7,6 +7,26 @@ workflows:
       events:
         - push
     scripts:
+      - name: Configure App Store Connect API Key
+        script: |
+          # Create directory for API keys
+          mkdir -p ~/.appstoreconnect/private_keys
+          
+          # Write API key to file
+          cat <<EOF > ~/.appstoreconnect/private_keys/AuthKey_$APPLE_DEVELOPER_CONNECTION_KEY_ID.p8
+          $APPLE_DEVELOPER_CONNECTION_KEY
+          EOF
+          
+          # Set permissions
+          chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$APPLE_DEVELOPER_CONNECTION_KEY_ID.p8
+          
+          # Configure environment variables for Xcode
+          export APP_STORE_CONNECT_API_KEY_PATH=~/.appstoreconnect/private_keys/AuthKey_$APPLE_DEVELOPER_CONNECTION_KEY_ID.p8
+          export APP_STORE_CONNECT_API_KEY_KEY_ID=$APPLE_DEVELOPER_CONNECTION_KEY_ID
+          export APP_STORE_CONNECT_API_KEY_ISSUER_ID=$APPLE_DEVELOPER_CONNECTION_ISSUER_ID
+          
+          echo "API Key configured at: $APP_STORE_CONNECT_API_KEY_PATH"
+
       - name: Update Team ID and Signing Settings
         script: |
           # Update all team IDs in project file
