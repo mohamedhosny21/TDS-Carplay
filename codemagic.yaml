@@ -4,21 +4,15 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        - certificate: "TDS-car"
-          provisioning_profile: "TDS-Car"
-          provisioning_profiles:
-            - bundle_identifier: "com.nft.colony.UploadVideo"
-              profile_name: "UploadVideo"
-            - bundle_identifier: "com.nft.colony.Video3"
-              profile_name: "Video3"
-            - bundle_identifier: "com.nft.colony.ScreenRec"
-              profile_name: "ScreenRec"
-            - bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
-              profile_name: "ScreenRecSetupUI"
-            - bundle_identifier: "com.nft.colony.Carplayintent"
-              profile_name: "CarPlayIntent"
-            - bundle_identifier: "com.nft.colony.CarplayintentUI"
-              profile_name: "CarplayintentUI"
+        certificate: "TDS-car"
+        provisioning_profile: "TDS-Car"
+        provisioning_profiles:
+          com.nft.colony.UploadVideo: "UploadVideo"
+          com.nft.colony.Video3: "Video3"
+          com.nft.colony.ScreenRec: "ScreenRec"
+          com.nft.colony.ScreenRecSetupUI: "ScreenRecSetupUI"
+          com.nft.colony.Carplayintent: "CarPlayIntent"
+          com.nft.colony.CarplayintentUI: "CarplayintentUI"
 
     triggering:
       events:
