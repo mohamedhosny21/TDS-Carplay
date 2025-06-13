@@ -4,30 +4,34 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        distribution_type: ad_hoc
-        profile_name: "TDS-Car"
-        provisioning_profiles:
-          - target: "TDS-Car"
-            bundle_identifier: "com.nft.colony"
-            profile_name: "TDS-Car"
-          - target: "UploadVideo"
-            bundle_identifier: "com.nft.colony.UploadVideo"
-            profile_name: "UploadVideo"
-          - target: "Video3"
-            bundle_identifier: "com.nft.colony.Video3"
-            profile_name: "Video3"
-          - target: "ScreenRec"
-            bundle_identifier: "com.nft.colony.ScreenRec"
-            profile_name: "ScreenRec"
-          - target: "ScreenRecSetupUI"
-            bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
-            profile_name: "ScreenRecSetupUI"
-          - target: "CarPlayIntent"
-            bundle_identifier: "com.nft.colony.Carplayintent"
-            profile_name: "CarPlayIntent"
-          - target: "CarplayintentUI"
-            bundle_identifier: "com.nft.colony.CarplayintentUI"
-            profile_name: "CarplayintentUI"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "TDS-Car"
+          bundle_identifier: "com.nft.colony"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "UploadVideo"
+          bundle_identifier: "com.nft.colony.UploadVideo"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "Video3"
+          bundle_identifier: "com.nft.colony.Video3"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "ScreenRec"
+          bundle_identifier: "com.nft.colony.ScreenRec"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "ScreenRecSetupUI"
+          bundle_identifier: "com.nft.colony.ScreenRecSetupUI"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "CarPlayIntent"
+          bundle_identifier: "com.nft.colony.Carplayintent"
+        - distribution_type: ad_hoc
+          certificate_name: "iOS Distribution"
+          provisioning_profile_name: "CarplayintentUI"
+          bundle_identifier: "com.nft.colony.CarplayintentUI"
 
     triggering:
       events:
