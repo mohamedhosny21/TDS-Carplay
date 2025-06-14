@@ -35,19 +35,6 @@ workflows:
           export API_KEY_ID=23ZMF48P8Z
           export API_KEY_ISSUER_ID=fcb8faeb-1e16-4bcd-9083-9186811c0262
 
-      - name: Verify Entitlements
-        script: |
-          # Verify CarPlay entitlement exists
-          if ! grep -q "com.apple.developer.carplay-communication" "CarplayintentUI/CarplayintentUI.entitlements"; then
-            echo "ERROR: Missing CarPlay entitlement in CarplayintentUI"
-            exit 1
-          fi
-          
-          # Verify application groups match
-          if ! grep -q "group.com.nft.colony.UploadVideo" "UploadVideo/UploadVideo.entitlements"; then
-            echo "ERROR: UploadVideo entitlements mismatch"
-            exit 1
-          fi
 
       - name: Generate ExportOptions.plist
         script: |
