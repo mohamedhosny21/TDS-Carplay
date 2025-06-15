@@ -9,7 +9,7 @@
             - "UploadVideo"
             - "ScreenRec"
             - "ScreenRecSetupUI"
-            - "CarPlayIntent"
+            - "Carplayintent"
             - "CarplayintentUI"
           certificates:
             - "TDS_certificate" # Ensure this is a Distribution certificate
@@ -60,7 +60,7 @@
                 <key>com.nft.colony.ScreenRecSetupUI</key>
                 <string>ScreenRecSetupUI</string>
                 <key>com.nft.colony.Video3.Carplayintent</key>
-                <string>CarPlayIntent</string>
+                <string>Carplayintent</string>
                 <key>com.nft.colony.Video3.CarplayintentUI</key>
                 <string>CarplayintentUI</string>
               </dict>
@@ -83,7 +83,7 @@
               -destination 'generic/platform=iOS' \
               DEVELOPMENT_TEAM=C3Z5URCHGS \
               CODE_SIGN_STYLE=Manual \
-              PROVISIONING_PROFILE="ScreenRec=ScreenRec;ScreenRecSetupUI=ScreenRecSetupUI;Carplayintent=CarPlayIntent;CarplayintentUI=CarplayintentUI;UploadVideo=UploadVideo;Video3=Video3" \
+              PROVISIONING_PROFILE="ScreenRec=ScreenRec;ScreenRecSetupUI=ScreenRecSetupUI;Carplayintent=Carplayintent;CarplayintentUI=CarplayintentUI;UploadVideo=UploadVideo;Video3=Video3" \
               SWIFT_OPTIMIZATION_LEVEL="-Onone" \
               -allowProvisioningUpdates
             
