@@ -53,15 +53,15 @@
               <dict>
                 <key>com.nft.colony.Video3</key>
                 <string>Video3</string>
-                <key>com.nft.colony.UploadVideo</key>
+                <key>com.nft.colony.Video3.UploadVideo</key>
                 <string>UploadVideo</string>
                 <key>com.nft.colony.ScreenRec</key>
                 <string>ScreenRec</string>
                 <key>com.nft.colony.ScreenRecSetupUI</key>
                 <string>ScreenRecSetupUI</string>
-                <key>com.nft.colony.Carplayintent</key>
+                <key>com.nft.colony.Video3.Carplayintent</key>
                 <string>CarPlayIntent</string>
-                <key>com.nft.colony.CarplayintentUI</key>
+                <key>com.nft.colony.Video3.CarplayintentUI</key>
                 <string>CarplayintentUI</string>
               </dict>
               <key>compileBitcode</key>
