@@ -8,10 +8,7 @@
 	<array>
 		<string>webcredentials:auth.thomasdye.net</string>
 	</array>
-	<key>com.apple.developer.carplay-calling</key>
-	<true/>
-	<key>com.apple.developer.carplay-communication</key>
-	<true/>
+	
 	<key>com.apple.developer.kernel.increased-memory-limit</key>
 	<true/>
 	<key>com.apple.developer.networking.networkextension</key>
