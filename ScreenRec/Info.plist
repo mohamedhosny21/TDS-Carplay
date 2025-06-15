@@ -11,5 +11,7 @@
 		<key>RPBroadcastProcessMode</key>
 		<string>RPBroadcastProcessModeSampleBuffer</string>
 	</dict>
+<key>CFBundleVersion</key>
+<string>5</string>
 </dict>
 </plist>
