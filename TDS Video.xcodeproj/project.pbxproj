@@ -67,6 +67,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */Add commentMore actions
+		E9B371CA2C5D86080013612E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E9E926C12D934C5C00762912 /* UploadVideo.appex in Embed Foundation Extensions */,
+				E9B371BD2C5D86080013612E /* CarplayintentUI.appex in Embed Foundation Extensions */,
+				E9B371C02C5D86080013612E /* Carplayintent.appex in Embed Foundation Extensions */,
+				E96BB7492D32872D007BE3A8 /* ScreenRecSetupUI.appex in Embed Foundation Extensions */,
+				E96BB74C2D32872D007BE3A8 /* ScreenRec.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 
 /* Begin PBXFileReference section */
