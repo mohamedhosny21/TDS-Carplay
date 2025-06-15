@@ -709,58 +709,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
-		};
-					/* === Carplayintent Debug === */
-			F00DFACE0001 /* Debug */ = {
-			  isa = XCBuildConfiguration;
-			  buildSettings = {
-			    CODE_SIGN_STYLE = Manual;
-			    DEVELOPMENT_TEAM = C3Z5URCHGS;
-			    PRODUCT_BUNDLE_IDENTIFIER = com.nft.colony.Carplayintent;
-			    PROVISIONING_PROFILE_SPECIFIER = CarPlayIntent;
-			    CODE_SIGN_IDENTITY = "Apple Distribution";
-			  };
-			  name = Debug;
-			};
-			
-			/* === Carplayintent Release === */
-			F00DFACE0002 /* Release */ = {
-			  isa = XCBuildConfiguration;
-			  buildSettings = {
-			    CODE_SIGN_STYLE = Manual;
-			    DEVELOPMENT_TEAM = C3Z5URCHGS;
-			    PRODUCT_BUNDLE_IDENTIFIER = com.nft.colony.Carplayintent;
-			    PROVISIONING_PROFILE_SPECIFIER = CarPlayIntent;
-			    CODE_SIGN_IDENTITY = "Apple Distribution";
-			  };
-			  name = Release;
-			};
-			
-			/* === CarplayintentUI Debug === */
-			F00DFACE0003 /* Debug */ = {
-			  isa = XCBuildConfiguration;
-			  buildSettings = {
-			    CODE_SIGN_STYLE = Manual;
-			    DEVELOPMENT_TEAM = C3Z5URCHGS;
-			    PRODUCT_BUNDLE_IDENTIFIER = com.nft.colony.CarplayintentUI;
-			    PROVISIONING_PROFILE_SPECIFIER = CarplayintentUI;
-			    CODE_SIGN_IDENTITY = "Apple Distribution";
-			  };
-			  name = Debug;
-			};
-			
-			/* === CarplayintentUI Release === */
-			F00DFACE0004 /* Release */ = {
-			  isa = XCBuildConfiguration;
-			  buildSettings = {
-			    CODE_SIGN_STYLE = Manual;
-			    DEVELOPMENT_TEAM = C3Z5URCHGS;
-			    PRODUCT_BUNDLE_IDENTIFIER = com.nft.colony.CarplayintentUI;
-			    PROVISIONING_PROFILE_SPECIFIER = CarplayintentUI;
-			    CODE_SIGN_IDENTITY = "Apple Distribution";
-			  };
-			  name = Release;
-			};
 
 		E96BB74E2D32872D007BE3A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1098,6 +1046,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C3Z5URCHGS;
 				PROVISIONING_PROFILE_SPECIFIER = "CarplayintentUI";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CarplayintentUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CarplayintentUI;
@@ -1126,6 +1075,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C3Z5URCHGS;
 				PROVISIONING_PROFILE_SPECIFIER = "CarplayintentUI";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CarplayintentUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CarplayintentUI;
@@ -1153,6 +1103,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C3Z5URCHGS;
 				PROVISIONING_PROFILE_SPECIFIER = "CarPlayIntent";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Carplayintent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Carplayintent;
@@ -1180,6 +1131,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C3Z5URCHGS;
 				PROVISIONING_PROFILE_SPECIFIER = "CarPlayIntent";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Carplayintent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Carplayintent;
