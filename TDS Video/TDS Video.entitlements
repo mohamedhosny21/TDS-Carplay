@@ -15,7 +15,7 @@
 	<array/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.nft.colony</string>
+		<string>group.com.nft.colony.Carplayintent</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array/>
