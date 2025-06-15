@@ -12,7 +12,7 @@ workflows:
           - "CarPlayIntent"
           - "CarplayintentUI"
         certificates:
-          - "TDS-car" # Ensure this is a Distribution certificate
+          - "TDS_certificate" # Ensure this is a Distribution certificate
 
     triggering:
       events:
