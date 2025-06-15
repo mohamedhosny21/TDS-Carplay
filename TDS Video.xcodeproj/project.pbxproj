@@ -67,7 +67,7 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */Add commentMore actions
+/* Begin PBXCopyFilesBuildPhase section */
 		E9B371CA2C5D86080013612E /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
