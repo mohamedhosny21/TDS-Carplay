@@ -14,6 +14,9 @@
 				<string>INSearchForMessagesIntent</string>
 				<string>INSendMessageIntent</string>
 			</array>
+<key>CFBundleVersion</key>
+<string>5</string>
+
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.intents-service</string>
