@@ -14,8 +14,7 @@
 				<string>INSearchForMessagesIntent</string>
 				<string>INSendMessageIntent</string>
 			</array>
-<key>CFBundleVersion</key>
-<string>5</string>
+
 
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
@@ -23,5 +22,7 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).IntentHandler</string>
 	</dict>
+<key>CFBundleVersion</key>
+<string>5</string>
 </dict>
 </plist>
